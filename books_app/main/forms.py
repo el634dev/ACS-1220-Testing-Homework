@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, DateField, SelectField, SubmitField, TextAreaField
-from wtforms.ext.sqlalchemy.fields import QuerySelectField, QuerySelectMultipleField
+# from wtforms.ext.sqlalchemy.fields import QuerySelectField, QuerySelectMultipleField
 from wtforms.validators import DataRequired, Length, ValidationError
 from books_app.models import Audience, Book, Author, Genre, User
 
@@ -9,11 +9,11 @@ class BookForm(FlaskForm):
     title = StringField('Book Title',
         validators=[DataRequired(), Length(min=3, max=80)])
     publish_date = DateField('Date Published')
-    author = QuerySelectField('Author',
-        query_factory=lambda: Author.query, allow_blank=False)
+    # author = QuerySelectField('Author',
+    #     query_factory=lambda: Author.query, allow_blank=False)
     audience = SelectField('Audience', choices=Audience.choices())
-    genres = QuerySelectMultipleField('Genres',
-        query_factory=lambda: Genre.query)
+    # genres = QuerySelectMultipleField('Genres',
+    #     query_factory=lambda: Genre.query)
     submit = SubmitField('Submit')
 
 
